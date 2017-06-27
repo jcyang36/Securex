@@ -22,7 +22,6 @@
     <br/>
     <div th:fragment="login" class= "login"
          sec:authorize = "!isAuthenticated()">
-
         <div>
             <form action = '#' th:action = "@{/login}" method = "post">
                 <input type = "submit" value = "Login"/>
