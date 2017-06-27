@@ -14,10 +14,34 @@
 
 <div class="container">
 
+    <br/><br/>
     <div class="starter-template">
         <h5>List Books</h5>
     </div>
     <br/><br/>
+    <div th:fragment="login" class= "login"
+         sec:authorize = "!isAuthenticated()">
+
+        <div>
+            <form action = '#' th:action = "@{/login}" method = "post">
+                <input type = "submit" value = "Login"/>
+            </form>
+        </div>
+    </div>
+
+    <div th:fragment="logout" class= "logout"
+         sec:authorize = "isAuthenticated()">
+
+        <!--Logged in user: <span sec:authentication = "name"></span>
+        Roles: <span sec:authentication = "principal.authorities"></span> -->
+
+
+        <div>
+            <form action = '#' th:action = "@{/logout}" method = "post">
+                <input type = "submit" value = "Logout"/>
+            </form>
+        </div>
+    </div>
     <table class="table table-striped">
         <tr>
             <th>Cover</th>
