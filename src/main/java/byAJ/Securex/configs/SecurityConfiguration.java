@@ -14,11 +14,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().anyRequest().authenticated();
+                .authorizeRequests().antMatchers("/books/list").permitAll()
+
+                .antMatchers( "/index","/books/add").hasRole("USER").and().formLogin();
         http
                 .formLogin().failureUrl("/login?error")
                 .defaultSuccessUrl("/")
