@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org ">
+<html lang="en" xmlns:th="www.thymeleaf.org " xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,7 +19,7 @@
     </div>
     <br/><br/>
     <div th:fragment="login" class= "login"
-         sec:authorize = "!isAuthenticated()">
+         sec:authorize = "isAnonymous()">
 
         <div>
             <form action = '#' th:action = "@{/login}" method = "post">
